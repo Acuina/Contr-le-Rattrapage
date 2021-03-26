@@ -7,6 +7,7 @@ namespace Controle_Rattrapage
     {
         private static DemandeUsers _demandeUser = new DemandeUsers(); // utiliser les fonctions qui se trouve dans DemandeUsers
         private static ServicesJoueurs _ServicesJoueurs = new ServicesJoueurs(_demandeUser); // utiliser les fonctions qui se trouve dans ServicesJoueurs 
+        private static ServicesTournois _ServicesTournois = new ServicesTournois(_demandeUser, _ServicesJoueurs); // utiliser les fonctions qui se trouve dans ServicesTournois
         static void Main(string[] args)
         {
             while (true)
@@ -21,6 +22,7 @@ namespace Controle_Rattrapage
                 }
                     else if (choixUsers == "2")
                 {
+                    _ServicesTournois.Afficheuntournois();
                     Console.WriteLine("Montrer la liste des tournois");
                 }
                      else if (choixUsers == "3")
@@ -31,6 +33,7 @@ namespace Controle_Rattrapage
                      else if (choixUsers == "4")
                 {
                     Console.WriteLine("Ajout d'un tournois à la liste");
+                    _ServicesTournois.Creationdutournoi();
                 }
                     else if (choixUsers == "5")
                 {
@@ -48,6 +51,7 @@ namespace Controle_Rattrapage
                 }
                     else if (choixUsers == "8")
                 {
+                    _ServicesTournois.SupprimerTournoi();
                     Console.WriteLine("Supprimer un tournois de la liste des tournois");
                 }
                 else if (choixUsers == "Q")

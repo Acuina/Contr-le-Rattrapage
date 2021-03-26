@@ -29,5 +29,43 @@ namespace Controle_Rattrapage.Services
             }
         }
 
+        //ajout d'un tournois
+        public void Creationdutournoi()
+        {
+            tournois t = new tournois(); //création d'un tournois
+            int classementduvainqueur; // demande le classement du tournoi
+            t.nom = _demandeUsers.AppelduString("Nom du tournoi: "); //demande le nom du tournois
+            classementduvainqueur = _demandeUsers.DemandeEntier("Classement du vainqueur: "); //demande le classement du vainqueur du tournoi
+            t.vainqueurdutournois = _servicesJoueurs.RechercherJoueurs(classementduvainqueur); // rechercher le gagnant du tournoi
+
+            Listedestournois.Add(t);//ajout d'un tournois à la liste 
+        }
+
+        public void SupprimerTournoi()
+        {
+            tournois Supprimert = new tournois(); //ajout d'un tournoi
+            string nomSupprimert; //Nom du tournoi
+            nomSupprimert = _demandeUsers.AppelduString("Nom du tournoi à supprimer: "); 
+            Supprimert = Afficheuntournois(nomSupprimert);
+            Listedestournois.Remove(Supprimert); //suppression d'un tournoi
+
+        }
+
+        public tournois Afficheuntournois(string Affichenom)
+        {
+            tournois Affichet = new tournois();
+
+            foreach(tournois t in Listedestournois)
+            {
+                if (t.nom == Affichenom)
+                {
+                    Affichet = t;
+                    break;
+                }
+            }
+
+            return Affichet;
+        }
+
     }
 }

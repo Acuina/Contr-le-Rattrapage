@@ -56,22 +56,32 @@ namespace Controle_Rattrapage.Services
         public void SupprimerJoueurdetennis() //suppression des joueurs
         {
             int suppressionclassement = _demandeUser.DemandeEntier("Indiquer le classement du joueur a supprimer"); // demande du nombre
-            foreach (Joueursdetennis jt in ListedesJoueur) // regarder sur chacun des joueurs 
+            Joueursdetennis j = new Joueursdetennis();
+            j = RechercherJoueurs(suppressionclassement);
+            ListedesJoueur.Remove(j);
+
+            //Les lignes 59 à 61 remplace le foreach ( fonction plus courte et plus lisible ) et on va pouvoir appeller la fonction pour rechercher le joueur vainqueur
+            
+            /*foreach (Joueursdetennis jt in ListedesJoueur) // regarder sur chacun des joueurs 
             {
                 if (jt.classements == suppressionclassement) 
                 {
                     ListedesJoueur.Remove(jt);
                     break;
                 }
-            }
+            }*/
         }
 
         public void ModifierJoueurdetennis() //modifier des joueurs
         {
             int modifierclassement = _demandeUser.DemandeEntier("Indiquer le classement du joueur a modifier"); // demande du nombre
             Joueursdetennis j = new Joueursdetennis();
+            j = RechercherJoueurs(modifierclassement);
+            ListedesJoueur.Remove(j);
 
-            foreach (Joueursdetennis jm in ListedesJoueur) // regarder sur chacun des joueurs 
+            //Les lignes 78 à 80 remplace le foreach ( fonction plus courte et plus lisible ) et on va pouvoir appeller la fonction pour rechercher le joueur vainqueur
+
+            /*foreach (Joueursdetennis jm in ListedesJoueur) // regarder sur chacun des joueurs 
             {
                 if (jm.classements == modifierclassement)
                 {
@@ -79,11 +89,24 @@ namespace Controle_Rattrapage.Services
                     ListedesJoueur.Remove(jm); //suppression du joueur
                     break;
                 }
-            }
+            } */
 
             Afficheunjoueur(j);
             CreateJoueursdetennis();
         }
 
+        public Joueursdetennis RechercherJoueurs(int RechercheC)
+        {
+            Joueursdetennis RechercheJ = new Joueursdetennis();
+            foreach (Joueursdetennis jt in ListedesJoueur)
+            {
+                if (jt.classements == RechercheC)
+                {
+                    RechercheJ = jt;
+                    break;
+                }
+            }
+            return RechercheJ;
+        }
     }
 }
