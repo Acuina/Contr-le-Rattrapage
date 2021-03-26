@@ -42,6 +42,7 @@ namespace Controle_Rattrapage
                 }
                     else if (choixUsers == "6")
                 {
+                    _ServicesTournois.Modificationtournoi();
                     Console.WriteLine("Modifier la liste des tournois");
                 }
                     else if (choixUsers == "7")

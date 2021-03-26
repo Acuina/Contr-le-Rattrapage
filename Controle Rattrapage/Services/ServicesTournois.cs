@@ -29,6 +29,12 @@ namespace Controle_Rattrapage.Services
             }
         }
 
+        public void AfficheuntournoisII( tournois t)
+        {
+                Console.WriteLine("Nom du tournoi :" + t.nom);
+                Console.WriteLine("Vainqueur du tournoi :" + t.vainqueurdutournois.nom + " " + t.vainqueurdutournois.prénom);
+        }
+
         //ajout d'un tournois
         public void Creationdutournoi()
         {
@@ -65,6 +71,17 @@ namespace Controle_Rattrapage.Services
             }
 
             return Affichet;
+        }
+        public void Modificationtournoi()
+        {
+            tournois t = new tournois();
+            string nomModificationtournoi = _demandeUsers.AppelduString("Nom du tournoi à modifier");
+            t = Afficheuntournois(nomModificationtournoi);
+            Listedestournois.Remove(t);
+            Console.WriteLine(" Infos ");
+            AfficheuntournoisII(t);
+            Creationdutournoi();
+
         }
 
     }
