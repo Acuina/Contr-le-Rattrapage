@@ -9,13 +9,27 @@ namespace Controle_Rattrapage.Services
         public string AppelduString(string message)
         {
             Console.WriteLine(message);                     // sert à afficher le message saisie
-            string saisieUser = Console.ReadLine();  // Demande au clavier d'attendre à l'utilisateur la saisie 
-            while (string.IsNullOrEmpty(saisieUser)) // sert à afficher le message saisie tant que la chaine est vide
+            string saisieUser = Console.ReadLine();         // Demande au clavier d'attendre à l'utilisateur la saisie 
+            while (string.IsNullOrEmpty(saisieUser))        // sert à afficher le message saisie tant que la chaine est vide
             {
                 Console.WriteLine("La saisie faite n'est pas bonne");
-                saisieUser = Console.ReadLine();     // redemande la saisie
+                saisieUser = Console.ReadLine();            // redemande la saisie
             }
-            return saisieUser;                       // donne le resultat
+            return saisieUser;                              // donne le resultat
+        }
+
+        public int DemandeEntier(string message)
+        {
+            Console.WriteLine(message);
+            string nb;
+            nb = Console.ReadLine();
+            int intValue;
+            while (!int.TryParse(nb,out intValue))
+            {
+                Console.WriteLine("La saisie est invalide");
+                nb = Console.ReadLine();
+            }
+            return intValue;
         }
 
     }

@@ -8,7 +8,7 @@ namespace Controle_Rattrapage.Models
     {
         public string nom;
         public string prénom;
-        public string classements;
+        public int classements;
 
     }
 }
