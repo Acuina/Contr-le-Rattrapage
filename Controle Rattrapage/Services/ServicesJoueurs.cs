@@ -20,9 +20,10 @@ namespace Controle_Rattrapage.Services
             //Affiche les infos des joueurs de tennis
             foreach (Joueursdetennis j in ListedesJoueur)
             {
-                Console.WriteLine(j.nom);
-                Console.WriteLine(j.prénom);
-                Console.WriteLine(j.classements);
+                Console.WriteLine("Nom: " + j.nom);
+                Console.WriteLine("Prénom: " + j.prénom);
+                Console.WriteLine("Classement: \n" + j.classements);
+                Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- \n");
             }
 
         }
@@ -33,7 +34,7 @@ namespace Controle_Rattrapage.Services
                 Console.WriteLine("Nom: " + j.nom);
                 Console.WriteLine("Prénom: " + j.prénom);
                 Console.WriteLine("Classement: " + j.classements);
-                Console.WriteLine("\n");
+                Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_- \n");
         }
 
         public Joueursdetennis CreateJoueursdetennis()
@@ -42,11 +43,11 @@ namespace Controle_Rattrapage.Services
             Joueursdetennis jt = new Joueursdetennis();
 
             //demande le nom du joueur
-            jt.nom = _demandeUser.AppelduString("Nom joueur");
+            jt.nom = _demandeUser.AppelduString("Nom du joueur");
             //demande le prénom du joueur
-            jt.prénom = _demandeUser.AppelduString("Prénom joueur");
+            jt.prénom = _demandeUser.AppelduString("Prénom du joueur");
             //demande le classement du joueur
-            jt.classements = _demandeUser.DemandeEntier("classement joueur");
+            jt.classements = _demandeUser.DemandeEntier("classement du joueur");
             // Ajouter à la liste des joueurs
             ListedesJoueur.Add(jt);
             return jt;
@@ -55,7 +56,7 @@ namespace Controle_Rattrapage.Services
 
         public void SupprimerJoueurdetennis() //suppression des joueurs
         {
-            int suppressionclassement = _demandeUser.DemandeEntier("Indiquer le classement du joueur a supprimer"); // demande du nombre
+            int suppressionclassement = _demandeUser.DemandeEntier("Indiquez le classement du joueur a supprimer"); // demande du nombre
             Joueursdetennis j = new Joueursdetennis();
             j = RechercherJoueurs(suppressionclassement);
             ListedesJoueur.Remove(j);
@@ -74,7 +75,7 @@ namespace Controle_Rattrapage.Services
 
         public void ModifierJoueurdetennis() //modifier des joueurs
         {
-            int modifierclassement = _demandeUser.DemandeEntier("Indiquer le classement du joueur a modifier"); // demande du nombre
+            int modifierclassement = _demandeUser.DemandeEntier("Indiquez le classement du joueur a modifier"); // demande du nombre
             Joueursdetennis j = new Joueursdetennis();
             j = RechercherJoueurs(modifierclassement);
             ListedesJoueur.Remove(j);
